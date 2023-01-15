@@ -1,0 +1,22 @@
+.profile-img-wrapper{
+    image-rendering: pixelated;
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-img{
+    width: 100%;
+    height: auto;
+}
+
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+.nickname-text{
+    font-size: 500%;
+    -webkit-font-smoothing: none;
+    font-family: "lunchds";
+}

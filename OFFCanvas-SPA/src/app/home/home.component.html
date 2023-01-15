@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <div style="text-align: center">
+    <h1>144Canvas</h1>
+    <p class="lead">Little pictures done online</p>
+    <div class="text-center">
+      <a [routerLink]="['/register']"><button  [disabled]="loggedIn()" class="btn btn-primary btn-lg">Register</button></a>
+      <a [routerLink]="['/about']"><button class="btn btn-info btn-lg">Learn more</button></a>
+    </div>
+  </div>
+  <div style="margin-top: 5%;">
+    <div class="pictureListContainer" >
+      <div *ngIf="pictures?.length==0" style="font-size: 120%; text-align: center; padding: 10%"><p>Found nothing!</p></div>
+      <div *ngFor="let picture of pictures" >
+        <!--{{picture.title}}-->
+        <app-pictureCard [picture]="picture"></app-pictureCard>
+      </div> 
+    </div>
+  </div>
+
+  <!--<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-register></app-register>
+      </div>
+    </div>
+  </div>-->
+</div>

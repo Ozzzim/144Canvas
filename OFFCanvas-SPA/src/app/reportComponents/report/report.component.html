@@ -1,0 +1,35 @@
+<div class=" mb-6" style="padding: 1%; height: 100%; box-sizing: border-box; position: relative;">
+    <img src="{{this.getPath()}}" style="filter: blur(4px); -webkit-filter: blur(8px); width: 100%; height:auto;">
+    <!--<div style="background-image: url('{{this.reportedPicture.url}}'); 
+    filter: blur(8px); 
+    -webkit-filter: blur(8px); 
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;">
+        
+    </div>-->
+    <div class="card" style="position: absolute; left:50%; top:50%; transform: translate(-50%, -50%); width:100%; padding: 1%; background-color: #1e434a;">
+        <div style="text-align: center;">
+            <p style="font-size: 150%; color: #F79334;">You are about to report {{"'"+this.reportedPicture.title+"'"}}</p>
+            <p>You better be certain of this decision. False flagging pictures may result in banning of your account instead!</p>
+        </div>
+
+        <form #reportForm="ngForm" (ngSubmit)="submitReport();" class="my-2 my-lg-0">
+            Incident type<br>
+            <select class="form-select" aria-label="Default select example" required [(ngModel)]="reportModel.category">
+                <option value=1>Offensive imagery</option>
+                <option value=2>Offensive username/user descryption</option>
+                <option value=3>Advertisement</option>
+                <option value=4>Plagiarism</option>
+                <option value=5>Other</option>
+            </select>
+            <br>Details<br>
+            <textarea class="form-control mr-sm-2 textarea" name="Details"
+                placeholder="Details regarding incident" [(ngModel)]="reportModel.descryption">
+            </textarea>
+            You do not have to fill out details as long as offense is clearly apparent.<br>
+            <button [disabled]="!reportForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Submit</button>
+        </form>    
+    </div>
+</div>

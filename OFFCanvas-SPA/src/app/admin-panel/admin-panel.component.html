@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="scroll-left" style="font-size: 50px; font-weight: bold;"><p>ADMIN PANEL- NO REGULAR USERS ALLOWED</p></div>
+    <div style="display: flex; ">
+      <div class="userListContainer" style="flex-grow: 9; width: auto;">
+        <div *ngIf="reports==null || reports.length==0" style="font-size: 120%; text-align: center; padding: 10%"><p>Found nothing!</p></div>
+          <div *ngFor="let report of reports" >
+            <div (click)="loadDetails(report)">
+              <app-report-card [report]="report"></app-report-card>
+            </div>
+            
+          </div>
+      </div>
+      <div class="card adminPanelDetailContainer" style="padding: 1%; flex-grow: 1; max-width: 30%;">
+          <p style="font-size: 150%;">Details</p>
+          <div *ngIf="displayedReport!=null" style="display:flex; flex-direction: column;">
+            <div>Reported Picture:</div>
+            <div>
+              <a href="/pictures/{{displayedReport.pictureID}}"><img src="{{getPath()}}" style="width:100%;"></a>
+            </div>
+            <div>{{displayedReport.reportedPicture.title}}</div>
+            <div>
+              <a href="/users/{{displayedReport.reportedPicture.user.id}}">by {{displayedReport.reportedPicture.user.userName}}</a>
+            </div>
+            <div>Reportee:</div>
+            <div>
+              <a href="/users/{{displayedReport.reportingUser.id}}">{{displayedReport.reportingUser.userName}}</a>
+            </div>
+            <div>Reason: {{displayedReport.category}}</div>
+            <div>Details:</div>
+            <p>{{displayedReport.descryption}}</p>
+            <button class="btn btn-success my-2 my-sm-0" (click)="reject()" [disabled]="!isStaff()">Reject</button>
+            <button class="btn btn-success my-2 my-sm-0" (click)="deletePic()" [disabled]="!isStaff()">Delete picture</button>
+            <button class="btn btn-success my-2 my-sm-0" (click)="deleteUser()" [disabled]="!isAdmin()">Delete author</button>
+          </div>
+          <!--<form #searchForm="ngForm" class="my-2" (ngSubmit)="search()">
+            Search query
+            <input type="text" class="form-control" required name="query" [(ngModel)]="searchModel.query">
+            Search order
+            <select class="form-control form-select" aria-label="Order by" name="order" [(ngModel)]="searchModel.order">
+              <option value="date" selected>By date</option>
+              <option value="name">By nickname</option>
+            </select>
+            <button [disabled]="!searchForm.valid" class="btn btn-success" style="width: 100%" type="submit">Search</button>
+          </form>
+            <app-userSearchBar></app-userSearchBar>my-lg-0
+          <button class="btn btn-success my-2" (click)="reset(); searchForm.resetForm();">Reset</button>-->
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,70 @@
+<div class="card mb-6">
+    <div style="margin: 1%;">
+      <div *ngIf="pictureReady()" >
+        <img class="card-img-top" style="image-rendering: pixelated;" src="{{pictureService.getImagePath(picture)}}" alt="" >
+        <div style="margin: 10px;">
+          <!--<div style="display: flex; justify-content: space-between;">
+            <p class="card-text text-muted text-left" style="font-size: 200%;">{{picture.title}}</p>
+            <p class="card-text text-muted text-left">{{picture.dateSent | date: 'dd\/MM\/YYYY\ '}}</p>
+          </div>
+          <a *ngIf="picture.user!=null" [routerLink]="['/users/', picture.user.id]"><p class="card-text text-muted text-left">by {{picture.user.nickname}}</p></a>
+          -->
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+            <div><!--Picture title-->
+                <p class="card-text text-muted text-left" style="font-size: 200%;">{{picture.title}}</p>
+            </div>
+            <div><!--Date sent-->
+              <p class="card-text text-muted text-left">{{picture.dateSent | date: 'dd\/MM\/YYYY\ '}}</p>
+            </div>
+            <div style="flex-basis:100%; height: 0;"></div>
+            <div><!--User link-->
+              <a [routerLink]="['/users/', picture.user.id]">
+                <p *ngIf="picture.user!=null" class="card-text text-muted text-left">by {{picture.user.userName}}</p>
+              </a>
+            </div>
+            <div style="display: flex; justify-content: space-between; height: 100%; margin-bottom: -3%; margin-top: -2%;"><!--Actions-->
+              <div style="display: flex; flex-direction:column;">
+                <button type="button" id="button-Like" [disabled]="!loggedIn()" (click)="likeAction()" [ngClass]="liked ? 'active' : ''" class="btn btn-primary" style="width: auto;">‎<!--👍--></button>
+                <p class="card-text text-muted text-center">{{this.likesCount}}</p>
+              </div>
+              <div style="display: flex; flex-direction:column;">
+                <button type="button" id="button-Report" [disabled]="!loggedIn()" class="btn btn-primary" style="width: auto;">‎<!--🚩--></button>
+                <p class="card-text text-muted text-center"></p>
+              </div>
+            </div>
+          </div>
+          <div >
+              <p class="card-text text-muted text-left" style="font-size:70%; font-style: italic;">{{picture.tags}}</p>
+          </div>
+        </div>
+      </div>
+      <!--[routerLink]="['/pictures/', picture.id]-->
+    </div>
+</div>
+<div class="card mb-6">
+  <div style="margin: 1%;">
+    <p class="card-text text-muted text-left" style="font-size: 200%;">Comments</p>
+    <div *ngIf="loggedIn()">
+      <form #commentForm="ngForm" class="form-inline my-2 my-lg-0 loginFont" (ngSubmit)="postComment(); commentForm.resetForm()">
+        <input type="hidden" name="userid" readonly [(ngModel)]="commentModel.userID">
+        <input type="hidden" name="pictureid" readonly [(ngModel)]="commentModel.pictureID">
+        <textarea class="form-control mr-sm-2" type="password" name="password"
+          placeholder="Your comment..." required [(ngModel)]="commentModel.content"
+          style="width: 75%;">
+        </textarea>
+        <br>
+        <button [disabled]="!commentForm.valid" class="btn btn-success my-2 my-sm-0" type="submit" style="width: 20%">Comment</button>
+        <!--<button class="btn btn-success my-2 my-sm-0" type="submit">Sign up</button>-->
+      </form>
+    </div>
+    <hr>
+    <div *ngIf="hasComments()">
+      <div *ngFor="let comment of comments">
+        <app-commentPictureCard [comment]="comment"></app-commentPictureCard>
+      </div> 
+    </div>
+    <div *ngIf="!hasComments()">
+      <p #elseNoComm style="font-size: 150%; align-self: center;">There are no comments here yet...</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<!--<div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.js"></script>
+</div>-->
+<div class="container">
+  <div style="display: flex;">
+    <div class="canvasDisplay">
+      <canvas id="Canvas" width="256" height="144" >
+      </canvas>
+    </div>
+    <div class="toolbox">
+      <div style="margin:1%;">
+        <p style="font-size: 150%;">Color</p>
+          <!--<div style="background-color: {{color}}; height: 20px;"></div>
+          <div class="rgbValues">
+            <p>R:<input type="number"></p>
+            <p>G:<input type="number"></p>
+            <p>B:<input type="number"></p>
+          </div>-->
+          <div>
+            <input #color id="colorField" type="color" style="margin:auto; width: 94%; height:30px; margin-bottom: 25px;" [ngModel]="color" (ngModelChange)="setColor(color.value)">
+          </div>
+        <p style="font-size: 150%;">Tools</p>
+        <div style="margin-bottom: 25px;">
+          <div style="display: flex; justify-content:space-evenly; width:100%;margin-bottom: 5px;">
+            <input id="button-Brush" type="button" [ngClass]="{'pressed' : isDraw()}" (click)="setDraw()">
+            <input id="button-Fill" type="button" [ngClass]="{'pressed' : isFill()}" (click)="setFill()">
+            <input id="button-Sample" type="button" [ngClass]="{'pressed' : isSample()}" (click)="setSample()">
+          </div>
+          <p style="margin:auto; width: 94%;">Size: 
+            <input #brushSize id="brushSizeField" type="number" style="width: 100%;" [ngModel]="brushSize" (ngModelChange)="setSize(brushSize.value)" placeholder=1 ><script>brushSize=1;</script>
+          </p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="submission-data">
+    <form #submitForm="ngForm" (ngSubmit)="post()">
+      <div>Title</div>
+      <!--<input type="hidden" name="UserId" readonly [(ngModel)]="model.userid">-->
+      <input type="hidden" name="URL" readonly [(ngModel)]="model.url">
+      <input class="form-control mr-sm-2" type="text" name="Title" placeholder="Title" required [(ngModel)]="model.title">
+      <div><div style="display:inline;">Tags</div><div style="font-size: x-small; color: gray; display:inline;"> (separated with ',')</div></div>
+      <input class="form-control mr-sm-2" type="text" name="Tags" placeholder="Tags" [(ngModel)]="model.tags">
+      <div style="margin-top: 20px;"><button [disabled]="!submitForm.valid" style="margin-left: 40%; width: 20%;" class="btn btn-primary btn-lg" type="submit">Submit</button></div>
+      
+      
+      <!--<input class="form-control mr-sm-2" type="text" name="tags" placeholder="Title" required [(ngModel)]="model.tags">-->
+    </form>
+  </div>
+</div>

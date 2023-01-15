@@ -1,0 +1,11 @@
+.dropdown-toggle, .dropdown-item{
+    cursor: pointer;
+}
+
+.loginFont{
+    font-family: Arial, Helvetica, sans-serif;
+    ::placeholder{
+        font-family: lunchds;
+    }
+}
+        

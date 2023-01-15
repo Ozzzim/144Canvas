@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="column">
+    <div class="card mb-1">
+      <div class="profile-img-wrapper" >
+        <div class="profile-img">
+          <img *ngIf="user?.backgroundURL!=0" class="card-img-top" src="{{getPath()}}" alt="" >
+          <img *ngIf="user?.backgroundURL==0" class="card-img-top" src="./assets/DefaultBackground.png" alt="" > 
+        </div>
+        <div class="top-left nickname-text">
+          {{user?.userName}}
+        </div>
+      </div>
+      <div style="margin: 10px;">
+        <p style="font-size: 200%;">About</p>
+        <p>{{user?.descryption}}</p>
+        <p style="text-align: end; font-style: italic;">Joined {{user?.dateCreated| date: 'dd\/MM\/YYYY\ '}}</p>
+      </div>
+    </div>
+    <!--ACTIVITY-->
+    <div class="card mb-1">
+      <div style="margin: 10px;">
+        <p style="font-size: 200%;">Activity</p>
+      </div>
+      <div class="col">
+        <div class="tab-panel">
+          <tabset>
+            <tab heading="Creations">
+              <div style="margin-bottom:20px;">
+                <div *ngIf="(user?.pictures!=null && user?.pictures.length>0)">
+                  <!--<p style="margin: 15px; text-align: center; font-size: large;">User has creations, but I won't show em...</p>-->
+                  <div *ngFor="let picture of user?.pictures" >
+                    <app-pictureCard [picture]="picture"></app-pictureCard><!---->
+                  </div>
+                </div>
+                <div *ngIf="user?.pictures==null || user?.pictures.length<=0"><!---->
+                  <div *ngIf="true">
+                    <p style="margin: 15px; text-align: center; font-size: large;">User has no creations...</p>
+                  </div>
+                </div>
+              </div>
+            </tab>
+            <tab heading="Comments">
+              <div *ngIf="user?.userComments!=null && user?.userComments.length>0">
+                <div *ngFor="let comment of user?.userComments" >
+                  <app-commentProfileCard [comment]="comment"></app-commentProfileCard>
+                </div>
+              </div>
+              <div *ngIf="user?.userComments==null || user?.userComments.length<=0"><!---->
+                <div *ngIf="true">
+                  <p style="margin: 15px; text-align: center; font-size: large;">User has no comments...</p>
+                </div>
+              </div>
+            </tab>
+          </tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

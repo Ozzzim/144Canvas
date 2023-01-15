@@ -1,0 +1,7 @@
+<div class="card mb-2" style="display: flex; flex-direction: column; margin: 1%;">
+    <img  class="card-img-top" style="image-rendering: pixelated;" src="{{getPath()}}" alt="" >
+    <img *ngIf="picture.imagedataId==null" class="card-img-top" src="./assets/DefaultBackground.png" alt="">
+    <div style="margin: 1%; max-height: 20px; overflow:hidden;">
+        <p>{{picture.title}}</p>
+    </div>
+</div>

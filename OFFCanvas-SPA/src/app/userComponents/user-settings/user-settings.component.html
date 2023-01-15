@@ -1,0 +1,66 @@
+<div class="card mb-1 container" style="display: flex; flex-direction: column;">
+    <!--BACKGROUND CHANGE FORM-->
+    <p style="font-size: 200%;">Settings</p>
+    <p style="font-size: 130%;">Profile background</p>
+    <div>
+        <div style="display: flex; flex-direction: row;">
+            <div style="display: flex; flex-direction: column; justify-content: space-around; flex-grow: 3; text-align: center; min-width: 25%; image-rendering: pixelated;" class="card mb-1">
+                <p>Current</p>
+                <img *ngIf="currentBackground!=null" class="card-img-top" src="{{currentBackground}}" alt="" >
+                <img *ngIf="currentBackground==null" class="card-img-top" src="./assets/DefaultBackground.png" alt="" >
+            </div>
+            <div class="card mb-1" style="flex-grow: 8; overflow-y: scroll; max-height: 200px;">
+                <div *ngIf="(user?.pictures!=null && user?.pictures.length>0)" 
+                    style="display: flex; flex-flow: row wrap; justify-content: space-between;">
+                <!--<p style="margin: 15px; text-align: center; font-size: large;">User has creations, but I won't show em...</p>-->
+                    <div *ngFor="let picture of user?.pictures">
+                        <div style="max-width: 200px;" (click)="pickPicture(picture.id)" [ngClass]="picture.id == backgroundModel.newPicID ? 'pickedPic' : ''">
+                                <app-pictureMiniCard [picture]="picture"></app-pictureMiniCard><!----> 
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="user?.pictures==null || user?.pictures.length<=0"><!---->
+                    <p style="margin: 15px; text-align: center; font-size: large;">User has no creations...</p>
+                </div>
+            </div>
+        </div>
+        <form #backgroundChange="ngForm" (ngSubmit)="postBGChange(); backgroundChange.resetForm()">
+            <input type="hidden" name="newBackgroundID" required readonly [(ngModel)]="backgroundModel.newPicID">
+            <button [disabled]="!backgroundChange.valid" class="btn btn-success my-2 my-sm-0" type="submit">Change background</button>
+        </form>
+    </div>
+    <hr>
+    <!--USER DESCRYPTION FORM-->
+    <p style="font-size: 130%;">About</p>
+    <div>
+        About text
+        <form #aboutChange="ngForm" (ngSubmit)="postAboutChange(); aboutChange.resetForm()">
+            <!--<input class="form-control mr-sm-2 textarea" type="text" name="curretPassword"
+            placeholder="{{this.user.descryption}}" required [(ngModel)]="aboutModel.about"><br>-->
+            <textarea class="form-control mr-sm-2 textarea" name="about"
+            placeholder="{{this.user?.descryption}}" required [(ngModel)]="aboutModel.about">
+
+            </textarea><br>
+            <button [disabled]="!aboutChange.valid" class="btn btn-success my-2 my-sm-0" type="submit">Change about</button>
+        </form>
+    </div>
+    <hr>
+    <!--PASSWORD FORM-->
+    <p style="font-size: 130%;">Password</p>
+    <div>
+        <form #passResetForm="ngForm" (ngSubmit)="postPasswordChange(); passResetForm.resetForm()" class="my-2 my-lg-0">
+            Current password
+            <input class="form-control mr-sm-2 loginFont" type="password" name="curretPassword"
+            required [(ngModel)]="passwordModel.cPass">
+            New password
+            <input class="form-control mr-sm-2 loginFont" type="password" name="newPassword"
+            required [(ngModel)]="passwordModel.nPass">
+            Repeat new password
+            <input class="form-control mr-sm-2 loginFont" type="password" name="newPasswordR"
+            required [(ngModel)]="passwordModel.nPassR">
+            <button [disabled]="!passResetForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Reset password</button>
+        </form>
+        <br>
+        <button [routerLink]="['/users/passwordRecovery']">Forgot password?</button>
+    </div>
+</div>

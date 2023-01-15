@@ -1,0 +1,14 @@
+<div class="card mb-4" style="padding: 10px 15px;">
+  <!--<div *ngIf="comment.userID==1">
+    <p>Thus spoke {{comment.user.nickname}}:</p>
+  </div>
+  <div *ngIf="comment.userID!=1">
+    <p>{{comment.user.nickname}} says:</p>
+  </div>-->
+  <div style="display: flex; justify-content: space-between;">
+    <p><a [routerLink]="['/users/',comment.userID]">{{comment.commentingUser?.userName}}</a> says </p>
+    <p>{{comment?.dateSent | date: 'dd\/MM\/YYYY\ '}}</p>
+  </div>
+  <hr style="margin: 0.1em auto;">
+  <p>{{comment.content}}</p>
+</div>

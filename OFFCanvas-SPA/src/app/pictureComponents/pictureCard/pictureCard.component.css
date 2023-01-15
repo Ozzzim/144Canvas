@@ -1,0 +1,12 @@
+#button-Like  {
+    background-image: url("/assets/IconLike.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+#button-Report  {
+    background-image: url("/assets/IconReport.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

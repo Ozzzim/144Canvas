@@ -1,0 +1,14 @@
+footer
+{   
+    vertical-align: bottom;
+    height:50px;
+    clear: both;
+}
+
+.img-wrapper{
+    image-rendering: pixelated;
+}
+
+.btn-pressed{
+    background-color: #4CAF50;
+}

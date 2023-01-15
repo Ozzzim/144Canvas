@@ -1,0 +1,34 @@
+<div class="container">
+  <div style="display: flex; ">
+    <div class="pictureListContainer" style="flex-grow: 9">
+      <p style="font-size: 200%;">Pictures</p>
+      <div *ngIf="pictures?.length==0" style="font-size: 120%; text-align: center; padding: 10%"><p>Found nothing!</p></div>
+      <div *ngFor="let picture of pictures" >
+        <!--{{picture.title}}-->
+        <app-pictureCard [picture]="picture"></app-pictureCard>
+      </div> 
+    </div>  
+    <div class="card pictureSearchBarContainer" style="padding: 1%; flex-grow: 1;">
+      <p style="font-size: 150%;">Search users</p>
+      <form #searchForm="ngForm" class="my-2" (ngSubmit)="search()">
+        Search title
+        <input type="text" class="form-control" name="title" value=" " [(ngModel)]="searchModel.title">
+        Search tags (separated by ',')
+        <input type="text" class="form-control" name="tags" value=" " [(ngModel)]="searchModel.tags">
+        Search author
+        <input type="text" class="form-control" name="author" value=" " [(ngModel)]="searchModel.user">
+        Search order
+        <select class="form-control form-select" aria-label="Order by" name="order" [(ngModel)]="searchModel.order">
+          <option value="title" selected>By title</option>
+          <option value="popularity">By popularity</option>
+          <option value="date">By date</option>
+          <option value="user">By users nicknames</option>
+        </select>
+        <button [disabled]="!searchForm.valid" class="btn btn-success" style="width: 100%" type="submit">Search</button>
+      </form>
+        <!--<app-userSearchBar></app-userSearchBar>my-lg-0-->
+      <button class="btn btn-success my-2" (click)="reset(); searchForm.resetForm();">Reset</button>
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,45 @@
+<div class="card mb-6">
+  <div style="margin: 1%;">
+    <a [routerLink]="['/pictures/', picture.id]">
+      <img class="card-img-top" style="image-rendering: pixelated;" src="{{getPath()}}" alt="" >
+    </a>
+    <div style="margin: 10px;">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+        <div><!--Picture title-->
+          <a [routerLink]="['/pictures/', picture.id]">
+            <p class="card-text text-muted text-left" style="font-size: 200%;">{{picture.title}}</p>
+          </a>
+        </div>
+        <div><!--Date sent-->
+          <p class="card-text text-muted text-left">{{picture.dateSent | date: 'dd\/MM\/YYYY\ '}}</p>
+        </div>
+        <div style="flex-basis:100%; height: 0;"></div>
+        <div><!--User link-->
+          <a [routerLink]="['/users/', picture.user.id]">
+            <p *ngIf="picture.user!=null" class="card-text text-muted text-left">by {{picture.user.userName}}</p>
+          </a>
+        </div>
+        <div style="display: flex; justify-content: space-between; height: 100%; margin-bottom: -3%; margin-top: -2%;"><!--Actions-->
+          <div style="display: flex; flex-direction:column;">
+            <button type="button" id="button-Like" [disabled]="!loggedIn()" (click)="likeAction()" [ngClass]="liked ? 'active' : ''" class="btn btn-primary" style="width: auto;">‎<!--👍--></button>
+            <p class="card-text text-muted text-center">{{this.likesCount}}</p>
+          </div>
+          <div style="display: flex; flex-direction:column;">
+            <button type="button" id="button-Report" [disabled]="!loggedIn()" class="btn btn-primary" style="width: auto;" [routerLink]="['/report/',picture.id]">‎<!--🚩--></button>
+            <p class="card-text text-muted text-center"></p>
+          </div>
+        </div>
+      </div>
+      <!--<div style="display: flex; justify-content: space-between; padding-top:0%; margin-top:0%;padding-bottom:0%; margin-bottom:0%;">
+        
+        <div>
+          
+        </div>
+      </div>-->
+      
+    </div>
+    
+    <!--[routerLink]="['/pictures/', picture.id]-->
+  </div>
+  
+</div>
