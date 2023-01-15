@@ -1,0 +1,14 @@
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\bin\Debug\netcoreapp2.1\144Canvas.API.deps.json
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\bin\Debug\netcoreapp2.1\144Canvas.API.runtimeconfig.json
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\bin\Debug\netcoreapp2.1\144Canvas.API.runtimeconfig.dev.json
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\bin\Debug\netcoreapp2.1\144Canvas.API.dll
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\bin\Debug\netcoreapp2.1\144Canvas.API.pdb
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\obj\Debug\netcoreapp2.1\144Canvas.API.csprojAssemblyReference.cache
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\obj\Debug\netcoreapp2.1\144Canvas.API.csproj.CoreCompileInputs.cache
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\obj\Debug\netcoreapp2.1\144Canvas.API.RazorAssemblyInfo.cache
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\obj\Debug\netcoreapp2.1\144Canvas.API.RazorAssemblyInfo.cs
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\obj\Debug\netcoreapp2.1\144Canvas.API.AssemblyInfoInputs.cache
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\obj\Debug\netcoreapp2.1\144Canvas.API.AssemblyInfo.cs
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\obj\Debug\netcoreapp2.1\144Canvas.API.RazorTargetAssemblyInfo.cache
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\obj\Debug\netcoreapp2.1\144Canvas.API.dll
+C:\Users\Jozimek\Desktop\144Canvas\144Canvas.API\obj\Debug\netcoreapp2.1\144Canvas.API.pdb
